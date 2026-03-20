@@ -11,7 +11,16 @@ class Campuse extends Model
         'adresse',
         'type'
     ];
-    public function trajets(){
-        return $this->hasMany(Trajet::class, 'id_value');
+    
+    public function TrajetsDepart(){
+        return $this->hasMany(Campuse::class, 'id_campuse_depart');
+    }
+
+    public function TrajetsArrivee(){
+        return $this->hasMany(Campuse::class, 'id_campuse_arrivee');
+    }
+
+    public function employes(){
+        return $this->belongToMany(Employe::class, 'frequente','id_campuse','id_employe');
     }
 }

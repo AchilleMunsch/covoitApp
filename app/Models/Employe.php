@@ -11,7 +11,15 @@ class Employe extends Model
         'prenom',
         'email'
     ];
-    public function voitures(){
-        return $this->hasMany(Voiture::class, 'id_value');
+    public function vehicules(){
+        return $this->hasMany(Voiture::class, 'id');
+    }
+
+    public function trajets(){
+        return $this->belongsToMany(Trajet::class, 'participe','id_employe','id_trajet')->withPivot('date_inscription');
+    }
+
+    public function campuses(){
+        return $this->belongsToMany(Campuse::class, 'frequente','id_employe','id_campuse');
     }
 }
