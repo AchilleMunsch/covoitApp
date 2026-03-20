@@ -1,35 +1,43 @@
-<h1>Profil de {{ $employe->nom }}</h1>
+@extends('layouts.app')
 
-<h2>Véhicules</h2>
+@section('title', 'Profil de ' . $employe->nom)
 
-<table border="1">
-    <tr>
-        <th>Modèle</th>
-        <th>Action</th>
-    </tr>
+@section('content')
 
-    @foreach($employe->vehicules as $vehicule)
-    <tr>
-        <td>{{ $vehicule->modele }}</td>
-        <td>
-            <a href="{{ route('vehicules.show', $vehicule->id) }}">Voir</a>
-        </td>
-    </tr>
-    @endforeach
+    <h1>Profil de {{ $employe->nom }}</h1>
 
-</table>
+    <h2>Véhicules</h2>
 
-<h2>Vérifier un modèle</h2>
+    <table border="1">
+        <tr>
+            <th>Modèle</th>
+            <th>Action</th>
+        </tr>
 
-<form method="POST" action="{{ route('employes.verifier', $employe->id) }}">
-    @csrf
+        @foreach($employe->vehicules as $vehicule)
+        <tr>
+            <td>{{ $vehicule->modele }}</td>
+            <td>
+                <a href="{{ route('vehicules.show', $vehicule->id) }}">Voir</a>
+            </td>
+        </tr>
+        @endforeach
 
-    <input type="text" name="modele" placeholder="Modèle à chercher">
+    </table>
 
-    <button type="submit">Vérifier</button>
+    <h2>Vérifier un modèle</h2>
 
-</form>
+    <form method="POST" action="{{ route('employes.verifier', $employe->id) }}">
+        @csrf
 
-@if(isset($resultat))
-    <p>Résultat : {{ $resultat }}</p>
-@endif
+        <input type="text" name="modele" placeholder="Modèle à chercher">
+
+        <button type="submit">Vérifier</button>
+
+    </form>
+
+    @if(isset($resultat))
+        <p>Résultat : {{ $resultat }}</p>
+    @endif
+
+@endsection

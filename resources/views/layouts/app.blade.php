@@ -1,60 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
-    <title>Gestion des employés</title>
-
-    <style>
-        body{
-            font-family: Arial, sans-serif;
-            margin:40px;
-        }
-
-        nav{
-            margin-bottom:20px;
-        }
-
-        nav a{
-            margin-right:15px;
-            text-decoration:none;
-            font-weight:bold;
-        }
-
-        table{
-            border-collapse: collapse;
-            width:60%;
-        }
-
-        th,td{
-            border:1px solid black;
-            padding:8px;
-        }
-
-        footer{
-            margin-top:40px;
-            color:gray;
-        }
-    </style>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'CovoitApp')</title>
 </head>
-
 <body>
 
-    <nav>
-        <a href="{{ route('employes.index') }}">Employés</a>
-    </nav>
+    {{-- HEADER --}}
+    <header style="background-color: #2d3748; color: white; padding: 1rem;">
+        <nav>
+            <a href="{{ route('employes.index') }}" style="color: white; margin-right: 1rem;">Employés</a>
+        </nav>
+    </header>
 
-    <hr>
+    {{-- CONTENU DE CHAQUE VUE --}}
+    <main style="padding: 2rem;">
+        @yield('content')
+    </main>
 
-    {{-- contenu des pages --}}
-    @yield('content')
-
-    <hr>
-
-    <footer>
-        Application Laravel - TD BUT Informatique
+    {{-- FOOTER --}}
+    <footer style="background-color: #2d3748; color: white; padding: 1rem; text-align: center;">
+        <p>© {{ date('Y') }} CovoitApp - IUT Bayonne</p>
     </footer>
+
+    {{-- Bootstrap JS --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

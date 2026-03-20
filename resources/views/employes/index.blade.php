@@ -1,19 +1,26 @@
+@extends('layouts.app')
 
-<h1>Liste des employés</h1>
+@section('title', 'Liste des employés')
 
-<table border="1">
-    <tr>
-        <th>Nom</th>
-        <th>Action</th>
-    </tr>
+@section('content')
 
-    @foreach($employes as $employe)
-    <tr>
-        <td>{{ $employe->nom }}</td>
-        <td>
-            <a href="{{ route('employes.show', $employe->id) }}">Voir</a>
-        </td>
-    </tr>
-    @endforeach
+    <h1>Liste des employés</h1>
 
-</table>
+    <table border="1">
+        <tr>
+            <th>Nom</th>
+            <th>Action</th>
+        </tr>
+
+        @foreach($employes as $employe)
+        <tr>
+            <td>{{ $employe->nom }}</td>
+            <td>
+                <a href="{{ route('employes.show', $employe->id) }}">Voir</a>
+            </td>
+        </tr>
+        @endforeach
+
+    </table>
+
+@endsection

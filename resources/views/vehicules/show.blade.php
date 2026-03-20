@@ -1,7 +1,14 @@
-<h1>Détails du véhicule</h1>
+@extends('layouts.app')
 
-<p>Modèle : {{ $vehicule->modele }}</p>
-<p>Marque : {{ $vehicule->marque }}</p>
-<p>Immatriculation : {{ $vehicule->immatriculation }}</p>
+@section('title', 'Détails du véhicule')
 
-<p>Propriétaire : {{ $vehicule->employe->nom }}</p>
+@section('content')
+
+    <h1>Détails du véhicule</h1>
+
+    <p>Modèle : {{ $vehicule->modele }}</p>
+    <p>Nombre de places : {{ $vehicule->nb_places }}</p>
+
+    <p>Propriétaire : {{ $vehicule->employe->nom }}</p>
+
+@endsection
