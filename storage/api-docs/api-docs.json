@@ -1,0 +1,162 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "CovoitApp API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://lakartxela.iutbayonne.univ-pau.fr/~amunsch002/covoitApp-api/public"
+        }
+    ],
+    "paths": {
+        "/api/employes": {
+            "get": {
+                "tags": [
+                    "Employés"
+                ],
+                "summary": "Liste tous les employés",
+                "operationId": "getEmployes",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Employés"
+                ],
+                "summary": "Créer un employé",
+                "operationId": "createEmploye",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nom",
+                                    "prenom",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "nom": {
+                                        "type": "string"
+                                    },
+                                    "prenom": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Créé"
+                    }
+                }
+            }
+        },
+        "/api/employes/{id}": {
+            "get": {
+                "tags": [
+                    "Employés"
+                ],
+                "summary": "Détail d'un employé",
+                "operationId": "getEmploye",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Employés"
+                ],
+                "summary": "Modifier un employé",
+                "operationId": "updateEmploye",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nom": {
+                                        "type": "string"
+                                    },
+                                    "prenom": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Employés"
+                ],
+                "summary": "Supprimer un employé",
+                "operationId": "deleteEmploye",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Supprimé"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Employés",
+            "description": "Employés"
+        }
+    ]
+}
