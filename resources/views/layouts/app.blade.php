@@ -14,7 +14,6 @@
         </nav>
     </header>
 
-    {{-- CONTENU DE CHAQUE VUE --}}
     <main style="padding: 2rem;">
         @yield('content')
     </main>
